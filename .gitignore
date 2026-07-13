@@ -116,3 +116,10 @@ crashlytics-build.properties
 **/summaries/
 # Keep results READMEs and link files tracked:
 !**/results/README.md
+
+# --- Claude Code (keep all Claude files out of the shared repo) ---
+**/.claude/
+**/CLAUDE.md
+**/CLAUDE.local.md
+**/.mcp.json
+**/.claude.json
