@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// 레거시 Input이 막혀 있어 New Input System(Keyboard.current)으로 입력을 읽는다.
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
@@ -15,9 +14,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     Animator animator;
 
-    // 레퍼런스 continuousActions 대응 (Heuristic로 채운다)
-    float m_Forward; // W/S -> actions[0]
-    float m_Rotate;  // A/D -> actions[2]
+    float m_Forward;
+    float m_Rotate;
 
     void Awake()
     {
@@ -37,7 +35,6 @@ public class PlayerController : MonoBehaviour
         MoveAgent();
     }
 
-    // 레퍼런스 FoodCollectorAgent.Heuristic()
     void Heuristic()
     {
         m_Forward = 0f;

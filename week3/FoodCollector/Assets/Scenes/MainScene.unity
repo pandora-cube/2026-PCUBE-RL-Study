@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 77711630}
   m_Layer: 0
   m_Name: wall1
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 169421506}
   m_Layer: 0
   m_Name: Carrotfbx (2)
-  m_TagString: Untagged
+  m_TagString: badFood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 252314747}
   m_Layer: 0
   m_Name: Meat (5)
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -459,6 +459,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.8072599
   m_Center: {x: -0.009108067, y: -0.06920588, z: -0.5621209}
+--- !u!134 &299196947
+PhysicsMaterial:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 2
+  m_DynamicFriction: 0.6
+  m_StaticFriction: 0.6
+  m_Bounciness: 0
+  m_FrictionCombine: 0
+  m_BounceCombine: 0
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,7 +1035,7 @@ GameObject:
   - component: {fileID: 681288365}
   m_Layer: 0
   m_Name: Carrotfbx (1)
-  m_TagString: Untagged
+  m_TagString: badFood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1078,6 +1091,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.1745625
   m_Center: {x: -0.19054508, y: 0.2574283, z: -0.87724423}
+--- !u!134 &692602598
+PhysicsMaterial:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 2
+  m_DynamicFriction: 0.6
+  m_StaticFriction: 0.6
+  m_Bounciness: 0
+  m_FrictionCombine: 0
+  m_BounceCombine: 0
 --- !u!1 &695373692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,7 +1394,7 @@ GameObject:
   - component: {fileID: 850719241}
   m_Layer: 0
   m_Name: wall3
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1479,7 +1505,7 @@ GameObject:
   - component: {fileID: 856713797}
   m_Layer: 0
   m_Name: Meat (6)
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1728,7 +1754,7 @@ GameObject:
   - component: {fileID: 1124908799}
   m_Layer: 0
   m_Name: Carrotfbx (4)
-  m_TagString: Untagged
+  m_TagString: badFood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1887,7 +1913,7 @@ GameObject:
   - component: {fileID: 1161904545}
   m_Layer: 0
   m_Name: Meat (1)
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1956,7 +1982,7 @@ GameObject:
   - component: {fileID: 1269525534}
   m_Layer: 0
   m_Name: Meat (3)
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2116,7 +2142,7 @@ GameObject:
   - component: {fileID: 1629648596}
   m_Layer: 0
   m_Name: wall4
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2227,7 +2253,7 @@ GameObject:
   - component: {fileID: 1674317749}
   m_Layer: 0
   m_Name: Meat (4)
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2386,7 +2412,7 @@ GameObject:
   - component: {fileID: 1766347647}
   m_Layer: 0
   m_Name: Meat (7)
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2455,7 +2481,7 @@ GameObject:
   - component: {fileID: 1804114671}
   m_Layer: 0
   m_Name: Meat (2)
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2524,7 +2550,7 @@ GameObject:
   - component: {fileID: 1923981472}
   m_Layer: 0
   m_Name: Carrotfbx (3)
-  m_TagString: Untagged
+  m_TagString: badFood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2616,6 +2642,19 @@ Transform:
   - {fileID: 1629648595}
   m_Father: {fileID: 740787531}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!134 &2005923169
+PhysicsMaterial:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 2
+  m_DynamicFriction: 0.6
+  m_StaticFriction: 0.6
+  m_Bounciness: 0
+  m_FrictionCombine: 0
+  m_BounceCombine: 0
 --- !u!1 &2031917920
 GameObject:
   m_ObjectHideFlags: 0
@@ -2630,7 +2669,7 @@ GameObject:
   - component: {fileID: 2031917922}
   m_Layer: 0
   m_Name: wall2
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3066,7 +3105,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149497891336}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 299196947}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3475,7 +3514,7 @@ GameObject:
   - component: {fileID: 4315691621614475540}
   m_Layer: 0
   m_Name: Carrotfbx
-  m_TagString: Untagged
+  m_TagString: badFood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3672,7 +3711,7 @@ GameObject:
   - component: {fileID: 4488829545396285341}
   m_Layer: 0
   m_Name: Meat
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3794,7 +3833,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3508227171972121513}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 692602598}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3845,7 +3884,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3819147165829166374}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2005923169}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
