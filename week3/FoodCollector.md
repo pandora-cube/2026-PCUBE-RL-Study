@@ -179,7 +179,7 @@ behaviors:
       extrinsic:
         gamma: 0.99              # 미래 보상 할인율
         strength: 1.0
-    max_steps: 2000000           # 총 학습 스텝(에이전트 수만큼 빨리 소모)
+    max_steps: 200000            # 총 학습 스텝(에이전트 수만큼 빨리 소모)
     time_horizon: 64
     summary_freq: 10000          # TensorBoard 기록 주기
 ```

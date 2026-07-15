@@ -112,7 +112,7 @@ crashlytics-build.properties
 **/venv/
 **/env/
 # TensorBoard / training outputs
-**/results/*/
+**/results/*
 **/summaries/
 # Keep results READMEs and link files tracked:
 !**/results/README.md
