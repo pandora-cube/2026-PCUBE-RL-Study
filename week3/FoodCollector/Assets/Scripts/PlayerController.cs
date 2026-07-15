@@ -83,11 +83,13 @@ public class PlayerController : Agent
         if (other.CompareTag("food"))
         {
             AddReward(1f);
+            Debug.Log($"[Food] +1 (누적 {GetCumulativeReward():F2})");
             if (other.TryGetComponent(out Collectible c)) c.Respawn();
         }
         else if (other.CompareTag("badFood"))
         {
             AddReward(-1f);
+            Debug.Log($"[BadFood] -1 (누적 {GetCumulativeReward():F2})");
             if (other.TryGetComponent(out Collectible c)) c.Respawn();
         }
     }
