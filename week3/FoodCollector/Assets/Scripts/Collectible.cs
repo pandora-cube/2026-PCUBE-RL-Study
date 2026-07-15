@@ -16,12 +16,6 @@ public class Collectible : MonoBehaviour
         GetComponent<Collider>().isTrigger = true;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag(playerTag))
-            Respawn();
-    }
-
     public void Respawn()
     {
         Vector3 lp = transform.localPosition;
