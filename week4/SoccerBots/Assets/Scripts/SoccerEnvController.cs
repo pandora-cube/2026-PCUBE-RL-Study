@@ -1,10 +1,8 @@
 using System.Collections.Generic;
+using Unity.MLAgents;
 using UnityEngine;
 
-// 구현: soccer field's game logic
-// spawn/reset the players and ball
-// handle a goal (score + reset). 
-// 구현할 것: 보상
+// spawn/reset the players and ball, handle a goal (score + group reward + reset)
 public class SoccerEnvController : MonoBehaviour
 {
     [System.Serializable]
@@ -33,17 +31,28 @@ public class SoccerEnvController : MonoBehaviour
     public int blueScore;
     public int redScore;
 
-    private int m_ResetTimer;
+    int m_ResetTimer;
+    SimpleMultiAgentGroup m_BlueAgentGroup;
+    SimpleMultiAgentGroup m_RedAgentGroup;
 
     void Start()
     {
         ballRb = ball.GetComponent<Rigidbody>();
         m_BallStartingPos = ball.transform.position;
+
+        m_BlueAgentGroup = new SimpleMultiAgentGroup();
+        m_RedAgentGroup = new SimpleMultiAgentGroup();
+
         foreach (var item in AgentsList)
         {
             item.StartingPos = item.Agent.transform.position;
             item.StartingRot = item.Agent.transform.rotation;
             item.Rb = item.Agent.GetComponent<Rigidbody>();
+
+            if (item.Agent.team == Team.Blue)
+                m_BlueAgentGroup.RegisterAgent(item.Agent);
+            else
+                m_RedAgentGroup.RegisterAgent(item.Agent);
         }
         ResetScene();
     }
@@ -53,6 +62,8 @@ public class SoccerEnvController : MonoBehaviour
         m_ResetTimer += 1;
         if (m_ResetTimer >= MaxEnvironmentSteps && MaxEnvironmentSteps > 0)
         {
+            m_BlueAgentGroup.GroupEpisodeInterrupted();
+            m_RedAgentGroup.GroupEpisodeInterrupted();
             ResetScene();
         }
     }
@@ -69,15 +80,18 @@ public class SoccerEnvController : MonoBehaviour
 
     public void GoalTouched(Team scoredTeam)
     {
-        if (scoredTeam == Team.Blue)
-        {
-            blueScore++;
-        }
-        else
-        {
-            redScore++;
-        }
+        var scoredGroup = scoredTeam == Team.Blue ? m_BlueAgentGroup : m_RedAgentGroup;
+        var concededGroup = scoredTeam == Team.Blue ? m_RedAgentGroup : m_BlueAgentGroup;
+
+        // Faster goals are worth more, mirroring each agent's per-step existential reward.
+        scoredGroup.AddGroupReward(1f - (float)m_ResetTimer / MaxEnvironmentSteps);
+        concededGroup.AddGroupReward(-1f);
+
+        if (scoredTeam == Team.Blue) blueScore++; else redScore++;
         Debug.Log($"Goal! Blue {blueScore} - {redScore} Red");
+
+        scoredGroup.EndGroupEpisode();
+        concededGroup.EndGroupEpisode();
         ResetScene();
     }
 
