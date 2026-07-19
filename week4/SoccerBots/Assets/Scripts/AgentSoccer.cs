@@ -1,24 +1,16 @@
 using UnityEngine;
-using Unity.MLAgents;
-using Unity.MLAgents.Actuators;
-using Unity.MLAgents.Policies;
+using UnityEngine.InputSystem;
 
 public enum Team
 {
     Blue = 0,
-    Purple = 1
+    Red = 1
 }
 
-public class AgentSoccer : Agent
+// 앞으로 적용할 것: bservations / rewards / policy
+// 현재 적용된 것: movement, kick physics
+public class AgentSoccer : MonoBehaviour
 {
-    // Note that that the detectable tags are different for the blue and purple teams. The order is
-    // * ball
-    // * own goal
-    // * opposing goal
-    // * wall
-    // * own teammate
-    // * opposing player
-
     public enum Position
     {
         Striker,
@@ -26,53 +18,36 @@ public class AgentSoccer : Agent
         Generic
     }
 
-    [HideInInspector]
+    // Set per-player in the prefab/scene (blue vs red, and role).
     public Team team;
-    float m_KickPower;
-    // The coefficient for the reward for colliding with a ball. Set using curriculum.
-    float m_BallTouch;
     public Position position;
 
+    float m_KickPower;
     const float k_Power = 2000f;
-    float m_Existential;
     float m_LateralSpeed;
     float m_ForwardSpeed;
-
 
     [HideInInspector]
     public Rigidbody agentRb;
     SoccerSettings m_SoccerSettings;
-    BehaviorParameters m_BehaviorParameters;
+
+    // Reset anchor + spawn rotation, read by SoccerEnvController.ResetScene().
     public Vector3 initialPos;
     public float rotSign;
 
-    EnvironmentParameters m_ResetParams;
-
-    public override void Initialize()
+    void Awake()
     {
-        SoccerEnvController envController = GetComponentInParent<SoccerEnvController>();
-        if (envController != null)
+        if (team == Team.Blue)
         {
-            m_Existential = 1f / envController.MaxEnvironmentSteps;
-        }
-        else
-        {
-            m_Existential = 1f / MaxStep;
-        }
-
-        m_BehaviorParameters = gameObject.GetComponent<BehaviorParameters>();
-        if (m_BehaviorParameters.TeamId == (int)Team.Blue)
-        {
-            team = Team.Blue;
             initialPos = new Vector3(transform.position.x - 5f, .5f, transform.position.z);
             rotSign = 1f;
         }
         else
         {
-            team = Team.Purple;
             initialPos = new Vector3(transform.position.x + 5f, .5f, transform.position.z);
             rotSign = -1f;
         }
+
         if (position == Position.Goalie)
         {
             m_LateralSpeed = 1.0f;
@@ -88,108 +63,61 @@ public class AgentSoccer : Agent
             m_LateralSpeed = 0.3f;
             m_ForwardSpeed = 1.0f;
         }
+
         m_SoccerSettings = FindFirstObjectByType<SoccerSettings>();
         agentRb = GetComponent<Rigidbody>();
         agentRb.maxAngularVelocity = 500;
-
-        m_ResetParams = Academy.Instance.EnvironmentParameters;
     }
 
-    public void MoveAgent(ActionSegment<int> act)
+    void FixedUpdate()
     {
+        MoveByInput();
+    }
+
+    // Keyboard control (every keyboard player shares these keys):
+    // W/S = forward/back, Q/E = strafe left/right, A/D = rotate.
+    void MoveByInput()
+    {
+        var kb = Keyboard.current;
+        if (kb == null) return;
+
         var dirToGo = Vector3.zero;
         var rotateDir = Vector3.zero;
-
         m_KickPower = 0f;
 
-        var forwardAxis = act[0];
-        var rightAxis = act[1];
-        var rotateAxis = act[2];
-
-        switch (forwardAxis)
+        if (kb.wKey.isPressed)
         {
-            case 1:
-                dirToGo = transform.forward * m_ForwardSpeed;
-                m_KickPower = 1f;
-                break;
-            case 2:
-                dirToGo = transform.forward * -m_ForwardSpeed;
-                break;
+            dirToGo = transform.forward * m_ForwardSpeed;
+            m_KickPower = 1f;
+        }
+        else if (kb.sKey.isPressed)
+        {
+            dirToGo = transform.forward * -m_ForwardSpeed;
         }
 
-        switch (rightAxis)
+        // Strafe overrides forward, matching the original discrete-action move.
+        if (kb.eKey.isPressed)
         {
-            case 1:
-                dirToGo = transform.right * m_LateralSpeed;
-                break;
-            case 2:
-                dirToGo = transform.right * -m_LateralSpeed;
-                break;
+            dirToGo = transform.right * m_LateralSpeed;
+        }
+        else if (kb.qKey.isPressed)
+        {
+            dirToGo = transform.right * -m_LateralSpeed;
         }
 
-        switch (rotateAxis)
+        if (kb.aKey.isPressed)
         {
-            case 1:
-                rotateDir = transform.up * -1f;
-                break;
-            case 2:
-                rotateDir = transform.up * 1f;
-                break;
+            rotateDir = transform.up * -1f;
+        }
+        else if (kb.dKey.isPressed)
+        {
+            rotateDir = transform.up * 1f;
         }
 
         transform.Rotate(rotateDir, Time.deltaTime * 100f);
-        agentRb.AddForce(dirToGo * m_SoccerSettings.agentRunSpeed,
-            ForceMode.VelocityChange);
+        agentRb.AddForce(dirToGo * m_SoccerSettings.agentRunSpeed, ForceMode.VelocityChange);
     }
 
-    public override void OnActionReceived(ActionBuffers actionBuffers)
-
-    {
-
-        if (position == Position.Goalie)
-        {
-            // Existential bonus for Goalies.
-            AddReward(m_Existential);
-        }
-        else if (position == Position.Striker)
-        {
-            // Existential penalty for Strikers
-            AddReward(-m_Existential);
-        }
-        MoveAgent(actionBuffers.DiscreteActions);
-    }
-
-    public override void Heuristic(in ActionBuffers actionsOut)
-    {
-        var discreteActionsOut = actionsOut.DiscreteActions;
-        //forward
-        if (Input.GetKey(KeyCode.W))
-        {
-            discreteActionsOut[0] = 1;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            discreteActionsOut[0] = 2;
-        }
-        //rotate
-        if (Input.GetKey(KeyCode.A))
-        {
-            discreteActionsOut[2] = 1;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            discreteActionsOut[2] = 2;
-        }
-        //right
-        if (Input.GetKey(KeyCode.E))
-        {
-            discreteActionsOut[1] = 1;
-        }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            discreteActionsOut[1] = 2;
-        }
-    }
     /// <summary>
     /// Used to provide a "kick" to the ball.
     /// </summary>
@@ -202,16 +130,9 @@ public class AgentSoccer : Agent
         }
         if (c.gameObject.CompareTag("ball"))
         {
-            AddReward(.2f * m_BallTouch);
             var dir = c.contacts[0].point - transform.position;
             dir = dir.normalized;
             c.gameObject.GetComponent<Rigidbody>().AddForce(dir * force);
         }
     }
-
-    public override void OnEpisodeBegin()
-    {
-        m_BallTouch = m_ResetParams.GetWithDefault("ball_touch", 0);
-    }
-
 }

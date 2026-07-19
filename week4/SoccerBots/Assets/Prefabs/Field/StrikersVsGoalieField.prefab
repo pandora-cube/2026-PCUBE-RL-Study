@@ -484,8 +484,8 @@ GameObject:
   - component: {fileID: 738577474}
   - component: {fileID: 738577473}
   m_Layer: 0
-  m_Name: GoalNetPurple
-  m_TagString: purpleGoal
+  m_Name: GoalNetRed
+  m_TagString: redGoal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 65
@@ -620,8 +620,8 @@ GameObject:
   - component: {fileID: 922552527}
   - component: {fileID: 922552526}
   m_Layer: 0
-  m_Name: GoalNetPurpleOuter
-  m_TagString: purpleGoal
+  m_Name: GoalNetRedOuter
+  m_TagString: redGoal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 65
@@ -918,7 +918,7 @@ GameObject:
   - component: {fileID: 1358559439}
   - component: {fileID: 1358559438}
   m_Layer: 0
-  m_Name: GoalAreaPurple
+  m_Name: GoalAreaRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1015,8 +1015,8 @@ GameObject:
   - component: {fileID: 1411349255}
   - component: {fileID: 1411349254}
   m_Layer: 0
-  m_Name: GoalPurple
-  m_TagString: purpleGoal
+  m_Name: GoalRed
+  m_TagString: redGoal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 65
@@ -1992,8 +1992,8 @@ GameObject:
   - component: {fileID: 9152743230243588598}
   - component: {fileID: 9171805407464329310}
   m_Layer: 0
-  m_Name: PurpleGoalie
-  m_TagString: purpleAgent
+  m_Name: RedGoalie
+  m_TagString: redAgent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2107,10 +2107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SensorName: PurpleGoalieRayPerceptionSensor
+  m_SensorName: RedGoalieRayPerceptionSensor
   m_DetectableTags:
   - ball
-  - purpleGoal
+  - redGoal
   - wall
   - blueAgent
   m_RaysPerDirection: 20
@@ -2364,10 +2364,10 @@ MonoBehaviour:
   m_SensorName: BlueRayPerceptionSensor
   m_DetectableTags:
   - ball
-  - purpleGoal
+  - redGoal
   - wall
   - blueAgent
-  - purpleAgent
+  - redAgent
   m_RaysPerDirection: 5
   m_MaxRayDegrees: 60
   m_SphereCastRadius: 0.5
@@ -2867,7 +2867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 1141134673700168}
   envController: {fileID: 0}
-  purpleGoalTag: purpleGoal
+  redGoalTag: redGoal
   blueGoalTag: blueGoal
 --- !u!54 &54100138833592438
 Rigidbody:
@@ -2980,7 +2980,7 @@ GameObject:
   - component: {fileID: 33174308205182346}
   - component: {fileID: 23344424056921900}
   m_Layer: 0
-  m_Name: AgentCube_Purple
+  m_Name: AgentCube_Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3435,10 +3435,10 @@ MonoBehaviour:
   m_SensorName: BlueRayPerceptionSensorReverse
   m_DetectableTags:
   - ball
-  - purpleGoal
+  - redGoal
   - wall
   - blueAgent
-  - purpleAgent
+  - redAgent
   m_RaysPerDirection: 1
   m_MaxRayDegrees: 45
   m_SphereCastRadius: 0.5
@@ -3740,10 +3740,10 @@ MonoBehaviour:
   m_SensorName: BlueRayPerceptionSensorReverse
   m_DetectableTags:
   - ball
-  - purpleGoal
+  - redGoal
   - wall
   - blueAgent
-  - purpleAgent
+  - redAgent
   m_RaysPerDirection: 1
   m_MaxRayDegrees: 45
   m_SphereCastRadius: 0.5
@@ -4147,10 +4147,10 @@ MonoBehaviour:
   m_SensorName: BlueRayPerceptionSensor
   m_DetectableTags:
   - ball
-  - purpleGoal
+  - redGoal
   - wall
   - blueAgent
-  - purpleAgent
+  - redAgent
   m_RaysPerDirection: 5
   m_MaxRayDegrees: 60
   m_SphereCastRadius: 0.5

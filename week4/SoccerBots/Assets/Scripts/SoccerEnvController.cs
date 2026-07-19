@@ -1,7 +1,9 @@
 using System.Collections.Generic;
-using Unity.MLAgents;
 using UnityEngine;
 
+// ponytail: ML-Agents episode/reward/multi-agent-group logic stripped for the
+// study. What's left is the soccer field's game logic: spawn/reset the players
+// and ball, and handle a goal (score + reset). Rewards are yours to add.
 public class SoccerEnvController : MonoBehaviour
 {
     [System.Serializable]
@@ -16,58 +18,31 @@ public class SoccerEnvController : MonoBehaviour
         public Rigidbody Rb;
     }
 
-
-    /// <summary>
-    /// Max Academy steps before this platform resets
-    /// </summary>
-    [Tooltip("Max Environment Steps")] public int MaxEnvironmentSteps = 25000;
-
-    /// <summary>
-    /// The area bounds.
-    /// </summary>
-
-    /// <summary>
-    /// We will be changing the ground material based on success/failue
-    /// </summary>
+    [Tooltip("Steps before the round auto-resets (0 = never)")]
+    public int MaxEnvironmentSteps = 25000;
 
     public GameObject ball;
     [HideInInspector]
     public Rigidbody ballRb;
     Vector3 m_BallStartingPos;
 
-    //List of Agents On Platform
+    // List of players on this field.
     public List<PlayerInfo> AgentsList = new List<PlayerInfo>();
 
-    private SoccerSettings m_SoccerSettings;
-
-
-    private SimpleMultiAgentGroup m_BlueAgentGroup;
-    private SimpleMultiAgentGroup m_PurpleAgentGroup;
+    public int blueScore;
+    public int redScore;
 
     private int m_ResetTimer;
 
     void Start()
     {
-
-        m_SoccerSettings = FindFirstObjectByType<SoccerSettings>();
-        // Initialize TeamManager
-        m_BlueAgentGroup = new SimpleMultiAgentGroup();
-        m_PurpleAgentGroup = new SimpleMultiAgentGroup();
         ballRb = ball.GetComponent<Rigidbody>();
-        m_BallStartingPos = new Vector3(ball.transform.position.x, ball.transform.position.y, ball.transform.position.z);
+        m_BallStartingPos = ball.transform.position;
         foreach (var item in AgentsList)
         {
             item.StartingPos = item.Agent.transform.position;
             item.StartingRot = item.Agent.transform.rotation;
             item.Rb = item.Agent.GetComponent<Rigidbody>();
-            if (item.Agent.team == Team.Blue)
-            {
-                m_BlueAgentGroup.RegisterAgent(item.Agent);
-            }
-            else
-            {
-                m_PurpleAgentGroup.RegisterAgent(item.Agent);
-            }
         }
         ResetScene();
     }
@@ -77,12 +52,9 @@ public class SoccerEnvController : MonoBehaviour
         m_ResetTimer += 1;
         if (m_ResetTimer >= MaxEnvironmentSteps && MaxEnvironmentSteps > 0)
         {
-            m_BlueAgentGroup.GroupEpisodeInterrupted();
-            m_PurpleAgentGroup.GroupEpisodeInterrupted();
             ResetScene();
         }
     }
-
 
     public void ResetBall()
     {
@@ -92,33 +64,27 @@ public class SoccerEnvController : MonoBehaviour
         ball.transform.position = m_BallStartingPos + new Vector3(randomPosX, 0f, randomPosZ);
         ballRb.linearVelocity = Vector3.zero;
         ballRb.angularVelocity = Vector3.zero;
-
     }
 
     public void GoalTouched(Team scoredTeam)
     {
         if (scoredTeam == Team.Blue)
         {
-            m_BlueAgentGroup.AddGroupReward(1 - (float)m_ResetTimer / MaxEnvironmentSteps);
-            m_PurpleAgentGroup.AddGroupReward(-1);
+            blueScore++;
         }
         else
         {
-            m_PurpleAgentGroup.AddGroupReward(1 - (float)m_ResetTimer / MaxEnvironmentSteps);
-            m_BlueAgentGroup.AddGroupReward(-1);
+            redScore++;
         }
-        m_PurpleAgentGroup.EndGroupEpisode();
-        m_BlueAgentGroup.EndGroupEpisode();
+        Debug.Log($"Goal! Blue {blueScore} - {redScore} Red");
         ResetScene();
-
     }
-
 
     public void ResetScene()
     {
         m_ResetTimer = 0;
 
-        //Reset Agents
+        //Reset Players
         foreach (var item in AgentsList)
         {
             var randomPosX = Random.Range(-5f, 5f);
