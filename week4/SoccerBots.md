@@ -80,6 +80,8 @@ public class AgentSoccer : Agent   // MonoBehaviour → Agent
 
 에디터에서 각 선수에 **`RayPerceptionSensorComponent3D`** 컴포넌트를 붙인다. 코드로 벡터를 일일이 쌓지 말고 센서로 처리하는 게 표준.
 
+> 주의! 태그 순서가 blue와 red가 달라야 한다. (ball, wall, ownGoal, opponentGoal, ownAgent, opponentAgent 순서)
+
 - **Detectable Tags**: `ball`, `blueGoal`, `redGoal`, `wall`, 아군/적 태그
 - **Rays Per Direction**: 11 정도, **Max Ray Degrees**: 90~180
 - **Stacked Raycasts**: `3` → 공/상대의 **움직임(속도)** 을 정책이 추론
