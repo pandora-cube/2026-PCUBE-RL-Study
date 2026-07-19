@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// ponytail: ML-Agents episode/reward/multi-agent-group logic stripped for the
-// study. What's left is the soccer field's game logic: spawn/reset the players
-// and ball, and handle a goal (score + reset). Rewards are yours to add.
+// 구현: soccer field's game logic
+// spawn/reset the players and ball
+// handle a goal (score + reset). 
+// 구현할 것: 보상
 public class SoccerEnvController : MonoBehaviour
 {
     [System.Serializable]

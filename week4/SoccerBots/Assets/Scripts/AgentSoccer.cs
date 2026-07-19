@@ -37,14 +37,13 @@ public class AgentSoccer : MonoBehaviour
 
     void Awake()
     {
+        initialPos = transform.position;
         if (team == Team.Blue)
         {
-            initialPos = new Vector3(transform.position.x - 5f, .5f, transform.position.z);
             rotSign = 1f;
         }
         else
         {
-            initialPos = new Vector3(transform.position.x + 5f, .5f, transform.position.z);
             rotSign = -1f;
         }
 
