@@ -231,6 +231,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2062886351368027888, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
   m_PrefabInstance: {fileID: 59171298}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &59171300 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3033941687998086858, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
+  m_PrefabInstance: {fileID: 59171298}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2688ef4a36349f9aa010020c32d198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &164116256
 Transform:
   m_ObjectHideFlags: 0
@@ -399,6 +410,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3435236577827442093, guid: 5cf3b4027458a4207a4698a498ac555a, type: 3}
   m_PrefabInstance: {fileID: 196179673}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &196179675 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3041566143966016193, guid: 5cf3b4027458a4207a4698a498ac555a, type: 3}
+  m_PrefabInstance: {fileID: 196179673}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2688ef4a36349f9aa010020c32d198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &282208107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2260,6 +2282,22 @@ PrefabInstance:
       propertyPath: 'm_DetectableTags.Array.data[5]'
       value: blueAgent
       objectReference: {fileID: 0}
+    - target: {fileID: 4934422458073989611, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
+      propertyPath: 'm_DetectableTags.Array.data[2]'
+      value: redGoal
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934422458073989611, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
+      propertyPath: 'm_DetectableTags.Array.data[3]'
+      value: blueGoal
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934422458073989611, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
+      propertyPath: 'm_DetectableTags.Array.data[4]'
+      value: redAgent
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934422458073989611, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
+      propertyPath: 'm_DetectableTags.Array.data[5]'
+      value: blueAgent
+      objectReference: {fileID: 0}
     - target: {fileID: 9158952949169671689, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
       propertyPath: m_Name
       value: BlueStriker2
@@ -2274,6 +2312,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2062886351368027888, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
   m_PrefabInstance: {fileID: 1640928093}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1640928095 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3033941687998086858, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
+  m_PrefabInstance: {fileID: 1640928093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2688ef4a36349f9aa010020c32d198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1722374878
 Transform:
   m_ObjectHideFlags: 0
@@ -2438,6 +2487,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2062886351368027888, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
   m_PrefabInstance: {fileID: 1730267950}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1730267952 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3033941687998086858, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
+  m_PrefabInstance: {fileID: 1730267950}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2688ef4a36349f9aa010020c32d198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!215 &1774443880
 ReflectionProbe:
   m_ObjectHideFlags: 0
@@ -3220,6 +3280,22 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 1313447542}
+    - target: {fileID: 8855909228591134667, guid: 5cf3b4027458a4207a4698a498ac555a, type: 3}
+      propertyPath: 'm_DetectableTags.Array.data[2]'
+      value: redGoal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855909228591134667, guid: 5cf3b4027458a4207a4698a498ac555a, type: 3}
+      propertyPath: 'm_DetectableTags.Array.data[3]'
+      value: blueGoal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855909228591134667, guid: 5cf3b4027458a4207a4698a498ac555a, type: 3}
+      propertyPath: 'm_DetectableTags.Array.data[4]'
+      value: redAgent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855909228591134667, guid: 5cf3b4027458a4207a4698a498ac555a, type: 3}
+      propertyPath: 'm_DetectableTags.Array.data[5]'
+      value: blueAgent
+      objectReference: {fileID: 0}
     - target: {fileID: 8906707217021359879, guid: 5cf3b4027458a4207a4698a498ac555a, type: 3}
       propertyPath: m_Name
       value: BlueKeeper
@@ -3297,6 +3373,22 @@ PrefabInstance:
       propertyPath: 'm_DetectableTags.Array.data[5]'
       value: blueAgent
       objectReference: {fileID: 0}
+    - target: {fileID: 4934422458073989611, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
+      propertyPath: 'm_DetectableTags.Array.data[2]'
+      value: redGoal
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934422458073989611, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
+      propertyPath: 'm_DetectableTags.Array.data[3]'
+      value: blueGoal
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934422458073989611, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
+      propertyPath: 'm_DetectableTags.Array.data[4]'
+      value: redAgent
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934422458073989611, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
+      propertyPath: 'm_DetectableTags.Array.data[5]'
+      value: blueAgent
+      objectReference: {fileID: 0}
     - target: {fileID: 9158952949169671689, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
       propertyPath: m_Name
       value: BlueStriker1
@@ -3326,7 +3418,7 @@ MonoBehaviour:
     StartingPos: {x: 0, y: 0, z: 0}
     StartingRot: {x: 0, y: 0, z: 0, w: 0}
     Rb: {fileID: 0}
-  - Agent: {fileID: 0}
+  - Agent: {fileID: 1640928095}
     StartingPos: {x: 0, y: 0, z: 0}
     StartingRot: {x: 0, y: 0, z: 0, w: 0}
     Rb: {fileID: 0}
@@ -3334,15 +3426,15 @@ MonoBehaviour:
     StartingPos: {x: 0, y: 0, z: 0}
     StartingRot: {x: 0, y: 0, z: 0, w: 0}
     Rb: {fileID: 0}
-  - Agent: {fileID: 0}
+  - Agent: {fileID: 1730267952}
     StartingPos: {x: 0, y: 0, z: 0}
     StartingRot: {x: 0, y: 0, z: 0, w: 0}
     Rb: {fileID: 0}
-  - Agent: {fileID: 0}
+  - Agent: {fileID: 59171300}
     StartingPos: {x: 0, y: 0, z: 0}
     StartingRot: {x: 0, y: 0, z: 0, w: 0}
     Rb: {fileID: 0}
-  - Agent: {fileID: 0}
+  - Agent: {fileID: 196179675}
     StartingPos: {x: 0, y: 0, z: 0}
     StartingRot: {x: 0, y: 0, z: 0, w: 0}
     Rb: {fileID: 0}

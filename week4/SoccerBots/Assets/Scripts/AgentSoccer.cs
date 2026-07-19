@@ -85,6 +85,16 @@ public class AgentSoccer : Agent
     public override void OnActionReceived(ActionBuffers actions)
     {
         AddReward(position == Position.Goalie ? m_ExistentialReward : -m_ExistentialReward);
+
+        // Goalie shaping: hold the goal line. Penalize straying in depth (x) only, so it stays
+        // free to slide laterally (z) to block. Scale tied to the existential reward so it can't
+        // drown out the +/-1 goal signal: at home the goalie nets +existential, far from home goes negative.
+        if (position == Position.Goalie)
+        {
+            var strayed = Mathf.Abs(transform.position.x - initialPos.x);
+            AddReward(-m_ExistentialReward * strayed);
+        }
+
         MoveAgent(actions.DiscreteActions);
     }
 
@@ -115,7 +125,7 @@ public class AgentSoccer : Agent
         transform.Rotate(rotateDir, Time.deltaTime * 100f);
         agentRb.AddForce(dirToGo * m_SoccerSettings.agentRunSpeed, ForceMode.VelocityChange);
     }
-
+    
     // Keyboard control used when no trained model/trainer is attached (Behavior Type = Default/Heuristic).
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -138,6 +148,12 @@ public class AgentSoccer : Agent
             var dir = c.contacts[0].point - transform.position;
             dir = dir.normalized;
             c.gameObject.GetComponent<Rigidbody>().AddForce(dir * force);
+
+            if (position == Position.Striker)
+            {
+                var relativePosition = (transform.position - c.transform.position).normalized;
+                AddReward((team == Team.Blue ? -1 : 1) * relativePosition.x * 0.005f);
+            }
         }
     }
 }
