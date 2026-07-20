@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxEnvironmentSteps: 50000
-  strongRandomization: 1
+  strongRandomization: 0
   ballStallPenaltyScale: 0.00005
   ball: {fileID: 7664398686034957369}
   ballRb: {fileID: 0}

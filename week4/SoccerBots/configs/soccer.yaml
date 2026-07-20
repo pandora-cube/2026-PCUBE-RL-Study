@@ -84,8 +84,8 @@ environment_parameters:
           measure: reward
           behavior: Striker
           signal_smoothing: true
-          min_lesson_length: 1000
-          threshold: 1.0
+          min_lesson_length: 100
+          threshold: 0.8
         value: 1.0
       - name: SelfPlay
         value: 2.0
