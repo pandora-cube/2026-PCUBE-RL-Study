@@ -2,9 +2,8 @@
 
 ## Unity ML-Agents 개요
 
-> 이 문서는 **PPO를 이미 공부한** 사람이 ML-Agents를 처음 다룰 때 필요한 이론·용어·컴포넌트를 정리한다. "알고리즘"(PPO)은 `week1/이론-PPO.md` 에서 끝냈다고 보고, 여기서는 **그 알고리즘을 Unity 게임 환경에 연결하는 틀**을 다룬다. 설치는 `week1/실습-mlagents_셋업.md`, 실제 설계 요령은 `week2/이론-에이전트_설계.md`.
+> 이 문서에서는 "알고리즘"(PPO)은 `week1/이론-PPO.md` 에서 끝냈다고 보고, 여기서는 **그 알고리즘을 Unity 게임 환경에 연결하는 틀**을 다룬다. 설치는 `week1/실습-mlagents_셋업.md`, 실제 설계 요령은 `week2/이론-에이전트_설계.md`.
 >
-> **기준 버전**: Unity `6000.3.12f1` · `com.unity.ml-agents 4.0.x` (Release 23)
 >
 > 공식 문서: <https://docs.unity3d.com/Packages/com.unity.ml-agents@4.0/manual/ML-Agents-Overview.html>
 
@@ -202,7 +201,31 @@ mlagents-learn config/ppo/3DBall.yaml --run-id=my_first_run
 
 ---
 
-## 12. 학습 결과물
+## 12. `mlagents-learn` 주요 CLI 옵션
+
+config YAML 외에, 실행할 때마다 바뀌는 값들(재개 여부, 초기 가중치, 렌더링 여부 등)은 CLI 인자로 넘긴다.
+
+```shell
+mlagents-learn config/ppo/3DBall.yaml --run-id=my_first_run --resume
+```
+
+| 옵션 | 뜻 | 언제 쓰나 |
+| --- | --- | --- |
+| **--run-id=\<name\>** | 이번 실행의 이름. 결과가 `results/<run-id>/`에 쌓인다. | 매 실행 필수 — 결과 폴더를 구분한다. |
+| **--resume** | 같은 `--run-id`의 **체크포인트에서 이어서 학습**. | 중간에 끊긴 학습(정전, 타임아웃)을 이어갈 때. run-id 폴더가 없으면 에러 난다. |
+| **--force** | 같은 `--run-id`가 이미 있어도 **덮어쓰고 새로 시작**. | 실수로 같은 run-id를 다시 돌릴 때, 또는 의도적으로 처음부터 재시작할 때. `--resume`과 같이 못 쓴다. |
+| **--initialize-from=\<run-id\>** | **다른 run-id의 최종 체크포인트**를 초기 가중치로 불러와 새 run으로 시작. | 전이학습(transfer learning) — 비슷한 과제로 학습한 정책을 새 과제의 출발점으로 쓸 때. `--resume`과 달리 run-id/스텝 카운트는 새로 시작한다. |
+| **--env=\<path\>** | Unity 에디터 대신 **빌드된 실행 파일**로 학습. | 에디터 없이 빠르게/여러 환경 병렬로 돌릴 때(사전에 File > Build Settings로 빌드해 둬야 함). |
+| **--num-envs=\<N\>** | `--env` 사용 시 **환경 인스턴스를 N개 병렬 실행**해 경험 수집 속도를 올림. | 학습이 CPU/환경 시뮬레이션에 병목일 때. |
+| **--no-graphics** | 빌드 실행 시 **렌더링을 끄고** 학습(속도↑). | 화면을 볼 필요 없는 headless 학습(서버·CI 등). 시각 관측(Camera Sensor) 쓰는 에이전트에는 못 쓴다. |
+| **--seed=\<N\>** | 난수 시드 고정. | 실험 재현성이 필요할 때. |
+| **--torch-device=\<device\>** | 학습에 쓸 디바이스 지정(예: `cpu`, `cuda`, `mps`). | GPU 학습을 강제하거나 특정 GPU를 지정할 때. |
+
+> **주의**: `--resume`은 같은 config로 이어서 학습하는 것이고, `--initialize-from`은 가중치만 가져와 **다른(새) run으로 처음부터** 학습 카운트를 시작하는 것이다 — 둘을 헷갈리면 "학습이 끊긴 지점부터 이어지길" 기대했다가 스텝 카운트가 0부터 다시 도는 걸 보고 당황하게 된다.
+
+---
+
+## 13. 학습 결과물
 
 - **`.onnx` 모델**: 학습된 정책. `results/<run-id>/<BehaviorName>.onnx`. 이걸 `Behavior Parameters`의 Model 슬롯에 넣으면 Unity가 파이썬 없이 추론한다.
 - **TensorBoard 로그**: `tensorboard --logdir results` 로 누적 보상·엔트로피·손실 곡선을 본다. 학습이 잘 되는지 판단하는 핵심 도구(→ 설계 문서 8장).
