@@ -126,7 +126,7 @@ Unity 에디터(6000.x)에서 학습시킬 프로젝트를 연 뒤:
    - `#release_23` → Release 23 브랜치(= 패키지 `4.0.0`)로 고정.
 4. 잠시 뒤 패키지 목록에 **ML Agents 4.0.x** 가 뜨면 설치 완료.
 
-> **대안(더 간단)**: Unity 6에서는 `com.unity.ml-agents 4.0.x`가 Unity 레지스트리에도 올라와 있다. Package Manager의 **Unity Registry** 탭에서 "ML Agents" 를 검색해 **Install** 해도 된다. 결과는 같다. (이 스터디 프로젝트도 레지스트리 버전 `4.0.3`을 쓴다.) 다만 과제 요구대로 git URL 방식을 기본으로 안내한다.
+> **대안**: Unity 6에서는 `com.unity.ml-agents`가 Unity 레지스트리에도 올라와 있다. Package Manager의 **Unity Registry** 탭에서 "ML Agents" 를 검색해 **Install** 해도 된다. 결과는 같다. (이 스터디 프로젝트도 레지스트리 버전 `4.0.3`을 쓴다.)
 
 설치되면 `Behavior Parameters`, `Decision Requester`, 각종 `Sensor` 컴포넌트를 Add Component에서 쓸 수 있다.
 
