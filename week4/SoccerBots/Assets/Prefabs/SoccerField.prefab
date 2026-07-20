@@ -53,7 +53,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e397bc3ae78c466a8d44400f5b68e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxEnvironmentSteps: 8000
+  MaxEnvironmentSteps: 50000
+  strongRandomization: 1
+  ballStallPenaltyScale: 0.00005
   ball: {fileID: 7664398686034957369}
   ballRb: {fileID: 0}
   AgentsList:
@@ -2392,10 +2394,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3033941687998086858, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
+      propertyPath: team
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3222917417763158396, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
+    - target: {fileID: 7556449089354607779, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
+      propertyPath: TeamId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9158952949169671689, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
       propertyPath: m_Name
       value: RedStriker2
@@ -2582,10 +2592,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3033941687998086858, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
+      propertyPath: team
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3222917417763158396, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
+    - target: {fileID: 7556449089354607779, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
+      propertyPath: TeamId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9158952949169671689, guid: 162f67ebd30cd4ec4921d19feea3d70d, type: 3}
       propertyPath: m_Name
       value: RedStriker1
@@ -2833,6 +2851,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1471532071576416277}
     m_Modifications:
+    - target: {fileID: 3041566143966016193, guid: 5cf3b4027458a4207a4698a498ac555a, type: 3}
+      propertyPath: team
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3130607029563764763, guid: 5cf3b4027458a4207a4698a498ac555a, type: 3}
       propertyPath: m_Name
       value: AgentCube_Red
@@ -2876,6 +2898,10 @@ PrefabInstance:
     - target: {fileID: 3435236577827442093, guid: 5cf3b4027458a4207a4698a498ac555a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4575680279366133381, guid: 5cf3b4027458a4207a4698a498ac555a, type: 3}
+      propertyPath: TeamId
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6555755251753159982, guid: 5cf3b4027458a4207a4698a498ac555a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

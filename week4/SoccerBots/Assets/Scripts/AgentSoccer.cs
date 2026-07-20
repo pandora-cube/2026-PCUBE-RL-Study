@@ -38,9 +38,16 @@ public class AgentSoccer : Agent
     public Vector3 initialPos;
     public float rotSign;
 
+    void Awake()
+    {
+        // Capture the spawn anchor here, NOT in Initialize(): ML-Agents calls Initialize()
+        // lazily (several physics steps into play), by which point kickoff has already shoved
+        // the agent off its spawn — poisoning the reset target and the goalie shaping anchor.
+        initialPos = transform.position;
+    }
+
     public override void Initialize()
     {
-        initialPos = transform.position;
         rotSign = team == Team.Blue ? 1f : -1f;
 
         if (position == Position.Goalie)
@@ -93,6 +100,16 @@ public class AgentSoccer : Agent
         {
             var strayed = Mathf.Abs(transform.position.x - initialPos.x);
             AddReward(-m_ExistentialReward * strayed);
+        }
+        // Striker shaping: penalize running past the ball toward the opponent goal ("ahead of the
+        // ball"), proportional to how far ahead. Blue attacks +x, Red -x. Only bites when ahead > 0,
+        // so falling back behind the ball is free. Same scale as the goalie stray penalty.
+        else if (position == Position.Striker && m_EnvController != null)
+        {
+            var attackDir = team == Team.Blue ? 1f : -1f;
+            var ahead = attackDir * (transform.position.x - m_EnvController.ball.transform.position.x);
+            if (ahead > 0.5f)
+                AddReward(-m_ExistentialReward * ahead * 0.005f);
         }
 
         MoveAgent(actions.DiscreteActions);
@@ -152,7 +169,19 @@ public class AgentSoccer : Agent
             if (position == Position.Striker)
             {
                 var relativePosition = (transform.position - c.transform.position).normalized;
-                AddReward((team == Team.Blue ? -1 : 1) * relativePosition.x * 0.01f);
+                var sign = team == Team.Blue ? -1f : 1f;
+                var reward = sign * relativePosition.x * 0.01f;
+                AddReward(reward + 0.005f);
+            }
+            else if (position == Position.Goalie)
+            {
+                // Save: the goalie intercepted the ball. Give a clear reward for the block, plus a
+                // bonus for clearing it away from the goal we defend (Blue defends -x, Red defends
+                // +x -> "away" is +x for Blue, -x for Red). dir is the punt direction (goalie->ball).
+                // Base 0.05 rewards any interception; up to +0.1 more for a clean upfield clearance.
+                var awayFromGoal = team == Team.Blue ? 1f : -1f;
+                var save = 0.05f + 0.1f * Mathf.Clamp01(awayFromGoal * dir.x);
+                AddReward(save);
             }
         }
     }

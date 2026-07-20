@@ -61,3 +61,31 @@ behaviors:
       window: 10
       play_against_latest_model_ratio: 0.5
       initial_elo: 1200.0
+
+# 커리큘럼: SoccerEnvController.ResetScene()가 읽는 전역 float "lesson".
+# Striker 정책의 평균 보상이 threshold를 넘으면 다음 단계로 올라간다.
+# 0 = 빈 골대(2v0), 1 = 골키퍼 1명(2v1), 2 = 풀 3v3 self-play.
+# threshold / min_lesson_length는 시작값일 뿐 — TensorBoard 보면서 튜닝할 것.
+# 참고: 0~1단계는 상대 팀(team 1)이 필드에 없어 self-play가 사실상 solo 학습.
+#       정상이며 2단계(3v3)부터 진짜 self-play가 돈다.
+environment_parameters:
+  lesson:
+    curriculum:
+      - name: EmptyGoal
+        completion_criteria:
+          measure: reward
+          behavior: Striker
+          signal_smoothing: true
+          min_lesson_length: 100
+          threshold: 0.8
+        value: 0.0
+      - name: VsGoalie
+        completion_criteria:
+          measure: reward
+          behavior: Striker
+          signal_smoothing: true
+          min_lesson_length: 1000
+          threshold: 1.0
+        value: 1.0
+      - name: SelfPlay
+        value: 2.0
