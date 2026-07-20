@@ -620,7 +620,7 @@ GameObject:
   - component: {fileID: 2149284003954509803}
   - component: {fileID: 3907917091070617967}
   m_Layer: 0
-  m_Name: BlueKeeper
+  m_Name: BlueGoalie
   m_TagString: blueAgent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

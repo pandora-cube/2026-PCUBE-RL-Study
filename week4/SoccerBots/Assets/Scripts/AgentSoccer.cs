@@ -152,7 +152,7 @@ public class AgentSoccer : Agent
             if (position == Position.Striker)
             {
                 var relativePosition = (transform.position - c.transform.position).normalized;
-                AddReward((team == Team.Blue ? -1 : 1) * relativePosition.x * 0.005f);
+                AddReward((team == Team.Blue ? -1 : 1) * relativePosition.x * 0.01f);
             }
         }
     }
