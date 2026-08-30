@@ -4,7 +4,7 @@
 behaviors:
   Tetris:
     trainer_type: sac
-    max_steps: 5000000          # 총 학습 스텝 (테트리스는 넉넉히)
+    max_steps: 10000000          # 총 학습 스텝 (테트리스는 넉넉히)
     time_horizon: 64
     summary_freq: 20000
     keep_checkpoints: 5
@@ -18,7 +18,7 @@ behaviors:
       init_entcoef: 1.0                  # 초기 탐험 강도(α). 이산 40개면 낮춰볼 여지
       tau: 0.005                         # 타깃 네트워크 갱신 속도
       steps_per_update: 10.0             # (에이전트 스텝 : 업데이트) 비율
-      save_replay_buffer: false
+      save_replay_buffer: true
 
     network_settings:
       hidden_units: 256
