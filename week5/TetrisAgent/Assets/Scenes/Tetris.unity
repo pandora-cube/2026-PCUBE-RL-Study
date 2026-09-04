@@ -381,7 +381,7 @@ MonoBehaviour:
   cellSize: 1
   ghostColor: {r: 1, g: 1, b: 1, a: 0.25}
   emptyColor: {r: 1, g: 1, b: 1, a: 0.06}
-  autoPlay: 1
+  autoPlay: 0
   statusLabel: 
   dasDelay: 0.15
   arrRate: 0.04
