@@ -123,3 +123,14 @@ crashlytics-build.properties
 **/CLAUDE.local.md
 **/.mcp.json
 **/.claude.json
+# RacingBot Cup local evaluation output (regenerated on every run)
+**/EvaluationResults/
+
+# ML-Agents writes a timer dump into the project on every play session.
+# Nothing else lives in this folder, so ignore the whole thing including its meta.
+**/[Aa]ssets/ML-Agents/
+**/[Aa]ssets/ML-Agents.meta
+
+# Editor screenshots captured during verification
+**/[Aa]ssets/Screenshots/
+**/[Aa]ssets/Screenshots.meta
