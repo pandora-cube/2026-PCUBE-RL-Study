@@ -7,6 +7,8 @@
 
 ## 1. On-policy vs Off-policy
 
+![onpolicy-vs-offpolicy](assets/image.png)
+
 RL 학습의 핵심은 **경험(state, action, reward, next state)을 모아서 정책을 개선**하는 것이다.
 이 경험을 "누가 만든 걸 쓰느냐"로 두 부류가 갈린다.
 
