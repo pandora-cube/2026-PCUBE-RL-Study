@@ -35,11 +35,31 @@ namespace RacingBotCup.Eval
         [SerializeField] bool m_Follow = true;
 
         CarController m_Target;
+        CarController m_Pinned;
         Vector3 m_Velocity;
         float m_NextSearch;
 
         /// <summary>The car currently being followed, so other displays can agree with the view.</summary>
         public CarController Target => m_Target;
+
+        /// <summary>
+        /// Follows one specific car until told otherwise; null hands the choice back to
+        /// <see cref="AcquireTarget"/>.
+        ///
+        /// Automatic acquisition assumes there is only one competitor's car actually racing, which
+        /// is true of an evaluation and false of the finals — with a field of six it would pick an
+        /// arbitrary one and cut to a different car every re-search. Spectating is the finals'
+        /// answer: the operator says who to watch.
+        /// </summary>
+        public void Spectate(CarController car)
+        {
+            m_Pinned = car;
+
+            if (car != null)
+            {
+                m_Target = car;
+            }
+        }
 
         void LateUpdate()
         {
@@ -71,6 +91,14 @@ namespace RacingBotCup.Eval
         /// </summary>
         void AcquireTarget()
         {
+            // A pinned car is watched whatever it is doing — including sitting still, having already
+            // finished its lap, which IsLiveAgentCar would reject.
+            if (m_Pinned != null)
+            {
+                m_Target = m_Pinned;
+                return;
+            }
+
             var stillValid = m_Target != null && IsLiveAgentCar(m_Target);
             if (stillValid && Time.unscaledTime < m_NextSearch)
             {

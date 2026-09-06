@@ -233,7 +233,8 @@ namespace RacingBotCup.EditorTools
             return carObject.GetComponent<CarController>();
         }
 
-        static void AddEnvironment()
+        /// <summary>Light, camera, chase view and HUD — shared with the finals scene.</summary>
+        internal static void AddEnvironment()
         {
             var lightObject = new GameObject("Directional Light");
             var light = lightObject.AddComponent<Light>();
@@ -267,7 +268,7 @@ namespace RacingBotCup.EditorTools
             AssetDatabase.CreateAsset(config, k_SubmissionConfigPath);
         }
 
-        static void AssignMaterials(SerializedObject serialized)
+        internal static void AssignMaterials(SerializedObject serialized)
         {
             var materials = serialized.FindProperty("m_Materials");
             if (materials == null)
@@ -294,7 +295,7 @@ namespace RacingBotCup.EditorTools
             };
         }
 
-        static void AssignProps(SerializedObject serialized)
+        internal static void AssignProps(SerializedObject serialized)
         {
             var props = serialized.FindProperty("m_Props");
             if (props == null)

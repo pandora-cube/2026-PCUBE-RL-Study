@@ -611,8 +611,11 @@ namespace RacingBotCup.Eval
         /// <summary>
         /// The baseline shares the circuit with the competitor's car, so they must pass through one
         /// another. Without this the ghost would be a rolling roadblock.
+        ///
+        /// Public because the finals need exactly the same thing, six cars at a time — see
+        /// <see cref="Finals.FinalsDirector"/>.
         /// </summary>
-        static void IgnoreCollisionsBetween(GameObject a, GameObject b)
+        public static void IgnoreCollisionsBetween(GameObject a, GameObject b)
         {
             var first = a.GetComponentsInChildren<Collider>(true);
             var second = b.GetComponentsInChildren<Collider>(true);

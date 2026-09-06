@@ -337,7 +337,9 @@ namespace RacingBotCup.UI
             m_LapTime.color = k_Dim;
         }
 
-        static RectTransform CreatePanel(
+        /// <summary>Shared with <see cref="FinalsHud"/> — both build their canvas in code, and a
+        /// dark rounded-off panel is the same panel in both.</summary>
+        internal static RectTransform CreatePanel(
             string name, Transform parent, Vector2 anchor, Vector2 offset, Vector2 size)
         {
             var panel = CreateRect(name, parent);
@@ -351,23 +353,51 @@ namespace RacingBotCup.UI
             return panel;
         }
 
-        static RectTransform CreateRect(string name, Transform parent)
+        internal static RectTransform CreateRect(string name, Transform parent)
         {
             var go = new GameObject(name, typeof(RectTransform));
             go.transform.SetParent(parent, false);
             return (RectTransform)go.transform;
         }
 
-        static Text CreateText(string name, Transform parent, int size, TextAnchor alignment)
+        static Font s_UiFont;
+
+        /// <summary>
+        /// The font every readout is drawn in, shared with <see cref="FinalsHud"/>.
+        ///
+        /// The engine's built-in LegacyRuntime.ttf carries no Hangul, so a Korean label — or a
+        /// Korean racer's name over their car — comes out as boxes. Unity can borrow a font from the
+        /// machine instead: the names below are tried in order and the first one installed wins
+        /// (macOS, then Windows, then the usual Linux packages), falling back to the built-in font
+        /// so there is still something to draw with if none of them are there.
+        /// </summary>
+        internal static Font UiFont
+        {
+            get
+            {
+                if (s_UiFont == null)
+                {
+                    s_UiFont = Font.CreateDynamicFontFromOSFont(
+                        new[]
+                        {
+                            "Apple SD Gothic Neo", "AppleGothic",
+                            "Malgun Gothic", "맑은 고딕",
+                            "Noto Sans CJK KR", "NanumGothic",
+                        },
+                        24);
+                }
+
+                return s_UiFont != null ? s_UiFont : Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            }
+        }
+
+        internal static Text CreateText(string name, Transform parent, int size, TextAnchor alignment)
         {
             var go = new GameObject(name, typeof(RectTransform));
             go.transform.SetParent(parent, false);
 
             var text = go.AddComponent<Text>();
-
-            // Built into the engine, so there is no font asset to import and nothing to break when
-            // the project is cloned fresh.
-            text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            text.font = UiFont;
             text.fontSize = size;
             text.alignment = alignment;
             text.color = Color.white;

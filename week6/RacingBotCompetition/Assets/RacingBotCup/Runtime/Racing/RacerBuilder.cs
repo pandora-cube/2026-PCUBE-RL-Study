@@ -103,6 +103,33 @@ namespace RacingBotCup.Racing
             }
         }
 
+        /// <summary>
+        /// Repaints the car in one racer's colour, so a field of six identical cars can be told
+        /// apart at a glance — the tag over the car and its row on the standings board are drawn in
+        /// the same colour. Cosmetic only: reading <c>renderer.materials</c> instantiates this car's
+        /// own copies, so no other car changes colour with it, and nothing physical is touched.
+        /// </summary>
+        public void Tint(Color colour)
+        {
+            foreach (var renderer in Root.GetComponentsInChildren<Renderer>(true))
+            {
+                foreach (var material in renderer.materials)
+                {
+                    // URP's Lit uses _BaseColor; the older built-in property is there for anything
+                    // in the pack still on a legacy shader.
+                    if (material.HasProperty("_BaseColor"))
+                    {
+                        material.SetColor("_BaseColor", colour);
+                    }
+
+                    if (material.HasProperty("_Color"))
+                    {
+                        material.SetColor("_Color", colour);
+                    }
+                }
+            }
+        }
+
         static Material MakeTransparent(Material source, float alpha)
         {
             var copy = new Material(source);
@@ -238,17 +265,28 @@ namespace RacingBotCup.Racing
                 return null;
             }
 
-            var instance = Object.Instantiate(carPrefab, parent);
-            instance.name = name;
-
-            var car = instance.GetComponent<CarController>();
-            if (car == null)
+            // A prefab that already carries the rig — the baked RaceCar — is used as it is. Anything
+            // else is taken for vehicle art and gets a rig assembled around it by the same factory
+            // that baked RaceCar in the first place, so a different-looking car costs nothing but
+            // dragging one of the pack's presets into the field. See CarFactory for what that does
+            // and does not keep identical.
+            if (carPrefab.GetComponent<CarController>() == null)
             {
-                Debug.LogError($"[RacingBotCup] '{carPrefab.name}' has no CarController. Rebuild the prefabs.");
-                Object.Destroy(instance);
+                var built = CarFactory.Build(carPrefab, parent, name);
+
+                // The baked prefab carries one; without it a car on a different preset would leave
+                // no tyre marks and read as a different simulation rather than a different shape.
+                if (built != null && built.GetComponent<SkidMarks>() == null)
+                {
+                    built.gameObject.AddComponent<SkidMarks>();
+                }
+
+                return built;
             }
 
-            return car;
+            var instance = Object.Instantiate(carPrefab, parent);
+            instance.name = name;
+            return instance.GetComponent<CarController>();
         }
     }
 }
