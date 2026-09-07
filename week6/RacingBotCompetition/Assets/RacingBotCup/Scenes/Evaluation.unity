@@ -394,9 +394,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: RacingBotCup.Runtime::RacingBotCup.Eval.RaceEvaluator
   m_ParticipantId: jaehyun
-  m_Note: test04
-  m_AgentPrefab: {fileID: 657716353977145219, guid: 29d6ae13944a1754eb3caae6c9520e63, type: 3}
-  m_Model: {fileID: 5022602860645237092, guid: 3966e7c279528f4408f8ec53aa3d2e1b, type: 3}
+  m_Note: test05
+  m_AgentPrefab: {fileID: 1685875874712609360, guid: 5f105be380e1bb8499858399021a89e1, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 3fbbaf1e705db486c9d410c779ec0638, type: 3}
   m_Ghost:
     Mode: 0
     Model: {fileID: 5022602860645237092, guid: 3966e7c279528f4408f8ec53aa3d2e1b, type: 3}
@@ -411,12 +411,6 @@ MonoBehaviour:
     Barriers:
     - {fileID: 1502597403526910, guid: 3b7419b8b1f36a048b81ccc23552a62f, type: 3}
     - {fileID: 1097054090422306, guid: dd18674b3304e4b458b18b8a8f3c450d, type: 3}
-    - {fileID: 1560523696118674, guid: d5c46984853775445b62013a1fd94250, type: 3}
-    - {fileID: 1451731582899992, guid: 50ec1958579fd2f49be64209b34320f5, type: 3}
-    - {fileID: 1451731582899992, guid: 50ec1958579fd2f49be64209b34320f5, type: 3}
-    - {fileID: 1451731582899992, guid: 50ec1958579fd2f49be64209b34320f5, type: 3}
-    - {fileID: 1451731582899992, guid: 50ec1958579fd2f49be64209b34320f5, type: 3}
-    - {fileID: 1451731582899992, guid: 50ec1958579fd2f49be64209b34320f5, type: 3}
     - {fileID: 1451731582899992, guid: 50ec1958579fd2f49be64209b34320f5, type: 3}
     Crates:
     - {fileID: 1091073038512112, guid: eeb84bd8651c10045b099b858b99c422, type: 3}
