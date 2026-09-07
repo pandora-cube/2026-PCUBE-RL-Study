@@ -286,6 +286,20 @@ namespace RacingBotCup.Racing
 
             var instance = Object.Instantiate(carPrefab, parent);
             instance.name = name;
+
+            // A prefab saved out of a scene keeps whatever pose it was sitting at, and that pose is
+            // not as harmless as it looks: the liveries in Prefabs/ used to disagree about it (some
+            // at the origin, some carrying an offset and a few degrees of yaw), and cars identical
+            // in every physics value down to the bit came out reliably 6-12 ms apart over a 49 s lap
+            // purely by which side of that split they fell on. PlaceOnTrack overwrites the pose long
+            // before the lights go out, so it cannot move a start line — it just seeds the float
+            // arithmetic differently.
+            //
+            // Resetting here is only half the cure and is kept as a backstop: Awake, and with it the
+            // WheelCollider registration, has already run by this point, so a prefab that ships with
+            // a pose still races a hair differently. The prefabs themselves are stored at the origin,
+            // which is what actually makes them interchangeable — keep any new car that way.
+            instance.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             return instance.GetComponent<CarController>();
         }
     }
