@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 531916062}
   - component: {fileID: 531916061}
   - component: {fileID: 531916060}
+  - component: {fileID: 531916064}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -237,6 +238,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &531916064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531916059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &568444624
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 812676165}
   - component: {fileID: 812676164}
+  - component: {fileID: 812676166}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -379,6 +425,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &812676166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812676163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &1037653764
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,15 +484,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: RacingBotCup.Runtime::RacingBotCup.Finals.FinalsDirector
   m_Entries:
-  - Name: Racer 1
-    AgentPrefab: {fileID: 657716353977145219, guid: 29d6ae13944a1754eb3caae6c9520e63, type: 3}
-    Model: {fileID: 0}
-    CarPrefab: {fileID: 0}
-  - Name: Racer 2
-    AgentPrefab: {fileID: 657716353977145219, guid: 29d6ae13944a1754eb3caae6c9520e63, type: 3}
-    Model: {fileID: 0}
-    CarPrefab: {fileID: 0}
-  m_Seeds: ced40100c5d40100cfd40100
+  - Name: hyoyoung
+    AgentPrefab: {fileID: 657716353977145219, guid: 713fb60b71a1ac648bbedde5c0c22c56, type: 3}
+    Model: {fileID: 5022602860645237092, guid: 6c7a62a10585dbf4b98e67cfee12cfdb, type: 3}
+    CarPrefab: {fileID: 999525401814807249, guid: c8a2f1ae2af3a50489cd9e1706310367, type: 3}
+  - Name: seongwon
+    AgentPrefab: {fileID: 657716353977145219, guid: 52b588a4afa6f4f08baae19f256ffffa, type: 3}
+    Model: {fileID: 5022602860645237092, guid: 0e0023d638b4fc847bd4e1f9a8190140, type: 3}
+    CarPrefab: {fileID: 8243068649511458814, guid: 4691098246a2fb14babd22f95d27a1d1, type: 3}
+  m_Seeds: 89d70100
   m_CarPrefab: {fileID: 1699550303956486472, guid: 595ab9f5297e841609287d049a47537e, type: 3}
   m_Materials:
     Road: {fileID: 2100000, guid: ee0d6048c2da67340873e5e7d3f0ec4e, type: 2}

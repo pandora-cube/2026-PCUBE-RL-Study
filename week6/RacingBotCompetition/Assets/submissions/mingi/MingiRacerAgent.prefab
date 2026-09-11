@@ -1,0 +1,225 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2961765742884761649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5907603350107497793}
+  m_Layer: 0
+  m_Name: ray_veryfar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5907603350107497793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961765742884761649}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5377179420174380221}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6794899777052393260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8333209246965869333}
+  m_Layer: 0
+  m_Name: ray_far
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8333209246965869333
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6794899777052393260}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5377179420174380221}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8247166430118952815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5377179420174380221}
+  - component: {fileID: 3538354043193059854}
+  - component: {fileID: 1654987155342033260}
+  - component: {fileID: 5297981768870241721}
+  m_Layer: 0
+  m_Name: MingiRacerAgent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5377179420174380221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8247166430118952815}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8333209246965869333}
+  - {fileID: 5907603350107497793}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3538354043193059854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8247166430118952815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
+  m_BrainParameters:
+    VectorObservationSize: 53
+    NumStackedVectorObservations: 3
+    m_ActionSpec:
+      m_NumContinuousActions: 2
+      BranchSizes: 
+    VectorActionSize: 02000000
+    VectorActionDescriptions: []
+    VectorActionSpaceType: 1
+    hasUpgradedBrainParametersWithActionSpec: 1
+  m_Model: {fileID: 0}
+  m_InferenceDevice: 0
+  m_BehaviorType: 0
+  m_BehaviorName: Racer
+  TeamId: 0
+  m_UseChildSensors: 1
+  m_UseChildActuators: 1
+  m_DeterministicInference: 1
+  m_ObservableAttributeHandling: 0
+--- !u!114 &1654987155342033260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8247166430118952815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ccccd1ce65ca94d941443afeeff230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MingiRacerAgent
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  m_Waypoints: 5
+  m_WaypointSpacing: 10
+  m_CurvatureWindows: 3
+  m_CurvatureWindowLength: 20
+  m_AutomaticPromotion: 1
+  m_ManualStage: 1
+  m_EvaluationWindow: 100
+  m_MinEvaluationEpisodes: 50
+  m_RequiredFinishRate: 0.8
+  m_RequiredTargetTimeRate: 0.6
+  m_LogStatistics: 1
+  m_UseFixedTargetLapTime: 0
+  m_FixedTargetLapTime: 60
+  m_TargetAverageSpeed: 12
+  m_StandingStartAllowance: 3
+  m_ProgressReward: 0.02
+  m_TimePenaltyPerSecond: 0.02
+  m_OffTrackPenaltyPerSecond: 0.5
+  m_CenterRewardPerMetre: 0.01
+  m_SpeedRewardPerMetre: 0.01
+  m_SpeedReference: 25
+  m_MinForwardSpeed: 0.5
+  m_Stage1MinSpeedKph: 18
+  m_Stage2MinSpeedKph: 60
+  m_Stage3MinSpeedKph: 80
+  m_SlowSpeedPenaltyPerSecond: 0.2
+  m_SlowSpeedGraceSeconds: 3
+  m_ReversePenaltyPerSecond: 0.6
+  m_LapBonus: 20
+  m_TimeBonusWeight: 20
+  m_FailurePenalty: 10
+  m_StallTimeoutSeconds: 8
+  m_CollisionPenalty: 2
+  m_Stage1ProgressReward: 0.05
+  m_Stage1MinForwardSpeed: 0.05
+  m_LaunchBonus: 2
+  m_LaunchTargetSpeedKph: 15
+  m_LaunchWindowSeconds: 10
+  m_BoundaryRange: 15
+  m_GroundSampleSpacing: 0.5
+  m_BoundaryRefinementSteps: 5
+  m_GroundRayHeight: 3
+  m_GroundRayDepth: 8
+  m_ObstacleRange: 50
+  m_ObstacleRayHeight: 0.6
+  m_ObstacleCastRadius: 0.35
+--- !u!114 &5297981768870241721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8247166430118952815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
+  m_SensorName: front
+  m_DetectableTags:
+  - Track
+  - OffTrack
+  - Obstacle
+  - Ramp
+  m_RaysPerDirection: 12
+  m_MaxRayDegrees: 80
+  m_SphereCastRadius: 0.4
+  m_RayLength: 60
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967039
+  m_ObservationStacks: 1
+  m_AlternatingRayOrder: 1
+  m_UseBatchedRaycasts: 0
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  m_StartVerticalOffset: 0.6
+  m_EndVerticalOffset: 0.6

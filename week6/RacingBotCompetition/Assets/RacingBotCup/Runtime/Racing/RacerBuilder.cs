@@ -3,6 +3,7 @@ using RacingBotCup.Eval;
 using RacingBotCup.Track;
 using RacingBotCup.Vehicle;
 using Unity.InferenceEngine;
+using Unity.MLAgents;
 using Unity.MLAgents.Policies;
 using UnityEngine;
 
@@ -243,6 +244,19 @@ namespace RacingBotCup.Racing
             }
 
             agent.Configure(manualStepping);
+
+            // A DecisionRequester left on a submitted prefab (usually a leftover from training)
+            // would ask for decisions on its own schedule on top of the harness's, so that entry
+            // would drive at a different cadence than everyone else — and than the one it was
+            // trained at. RaceRules.DecisionPeriod is the rule; this is what enforces it, for every
+            // entry alike, without anyone's prefab having to be edited.
+            foreach (var requester in agentObject.GetComponentsInChildren<DecisionRequester>(true))
+            {
+                requester.enabled = false;
+                Debug.LogWarning(
+                    $"[RacingBotCup] '{agentPrefab.name}' ships a DecisionRequester. It has been " +
+                    $"disabled — decisions run at the fixed {RaceRules.DecisionPeriod}-step period.");
+            }
 
             var layer = RacingLayers.VehicleLayer;
             if (layer >= 0)

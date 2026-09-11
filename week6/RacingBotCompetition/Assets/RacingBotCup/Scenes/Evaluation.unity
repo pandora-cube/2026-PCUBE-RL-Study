@@ -394,9 +394,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: RacingBotCup.Runtime::RacingBotCup.Eval.RaceEvaluator
   m_ParticipantId: jaehyun
-  m_Note: test05
-  m_AgentPrefab: {fileID: 1685875874712609360, guid: 5f105be380e1bb8499858399021a89e1, type: 3}
-  m_Model: {fileID: 5022602860645237092, guid: 3fbbaf1e705db486c9d410c779ec0638, type: 3}
+  m_Note: final
+  m_AgentPrefab: {fileID: 657716353977145219, guid: 88b787cccbf1d48c5adababedc4a4d71, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 788a15a83305f4f509d67bb1c30c226d, type: 3}
   m_Ghost:
     Mode: 0
     Model: {fileID: 5022602860645237092, guid: 3966e7c279528f4408f8ec53aa3d2e1b, type: 3}
