@@ -35,7 +35,7 @@
 | **week4** | 멀티 에이전트 축구 | MA-POCA · Self-Play · Curriculum | `SoccerBots` | ✅ 완료 |
 | **week5** | 테트리스 봇 | SAC · Action Masking · 행동 추상화 | `TetrisAgent` | ✅ 완료 |
 | **week6** | 레이싱 대회 | 일반화 · 보상 설계 경쟁 | `RacingBotCompetition` | ✅ 완료 |
-| **week7-8** | 최종 프로젝트 | 1인 1환경 설계 → 학습 → 배포 | 개인별 | 🚧 진행 중 |
+| **week7-8** | 최종 프로젝트 | 1인 1환경 설계 → 학습 → 배포 | 개인별 | ✅ 완료 |
 
 ---
 
@@ -155,9 +155,9 @@
 
 📄 [참가 가이드](week6/CompetitionGuide.md) · [대회 결과](week6/CompetitionResults.md) · [리더보드 운영](week6/leaderboard/README.md) · [`racer_ppo.yaml`](week6/config/racer_ppo.yaml)
 
-### Week 7-8 — 최종 프로젝트 🚧
+### Week 7-8 — 최종 프로젝트
 
-week3~6에서는 주어진 환경을 다뤘다면, 최종 프로젝트에서는 **1인 1프로젝트로 환경 설계부터 배포까지 직접** 합니다. (~9월 말)
+최종 프로젝트에서는 **1인 1프로젝트로 환경 설계부터 학습까지 직접** 합니다.
 
 
 <!-- TODO(visual): 최종 프로젝트 결과 GIF + 프로젝트 목록 표 (완료 후 추가) -->
